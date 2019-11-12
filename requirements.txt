@@ -1,0 +1,9 @@
+jinja2
+basilica
+tweepy
+redis
+flask-sqlalchemy
+gunicorn
+scikit-learn
+python-dotenv
+python-decouple
