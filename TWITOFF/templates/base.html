@@ -2,19 +2,45 @@
 <html>
   <head>
     <!--Add {{title}} here and in app.py-->
-    <title> Twitoff! - {{title}} </title>
-
+    <title> Twitoff! {{title}} </title>
+    <!--Add a PINICSS style sheet-->
+    <link rel="stylesheet" href="https://unpkg.com/picnic">
   </head>
 
   <body>
-    <h1> Twitoff rules! </h1>
-    <p> Content goes here...</p>
+    <h1> Twitoff! </h1>
 
+    <!--Add a form to get user-->
+    {% block content %}
+    <form action="/user" method="post">
+      <input type="text" name="user_name" placeholder="User to add">
+      <input type="submit" value="Add User">
+    </form>
+
+    <!--Add a form to select users to compare-->
+    <form action="/compare" method="post">
+      <select name="user1">
+        {% for user in users %}
+        <option value = "{{user.name}}">{{ user.name }}</option>
+        {% endfor %}
+      </select>
+      <select name="user2">
+        {% for user in users %}
+        <option value = "{{user.name}}">{{ user.name }}</option>
+        {% endfor %}
+      </select>
+      <input type="text" name="tweet_text" placeholder="Tweet text to predict">
+      <input type="submit" value="Compare Users">
+    </form>
+
+    {% endblock %}
+
+    <!--Old code to input user:
     <ul>
       {% for user in users %}
       <li>{{ user.name }}</li>
       {% endfor %}
-    </ul>
+    </ul>-->
 
   </body>
 </html>
